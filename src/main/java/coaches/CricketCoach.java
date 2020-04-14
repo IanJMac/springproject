@@ -3,41 +3,57 @@ package coaches;
 import services.FortuneService;
 
 /**
- * Created by ianmacclancy on 6/10/19.
+ * Created by ianmacclancy on 7/15/19.
  */
-public class TrackCoach implements Coach {
+public class CricketCoach implements Coach {
 
 	//====================================================================================
 	// Fields 
 	//====================================================================================
 	private FortuneService fortuneService;
-
+	private String emailAddress;
+	private String team;
 	//====================================================================================
 	// Constructors 
 	//====================================================================================
 
-	public TrackCoach() {
-	}
-
-	//define constructor for dependancy injection
-	public TrackCoach(FortuneService theFortuneService) {
-		fortuneService = theFortuneService;
+	public CricketCoach() {
 	}
 
 	//====================================================================================
 	// Class Methods 
 	//====================================================================================
+	public void setFortuneService(FortuneService fortuneService) {
+		this.fortuneService = fortuneService;
+	}
+
 	@Override
 	public String getDailyWorkout() {
-		return "Run around the circle a bunch";
+		return "Practice fast bowling for 15 minutes a day";
 	}
 
 	@Override
 	public String getDailyFortune() {
-		//use fortune service to get a fortune
-		return "just do it! " + fortuneService.getFortune();
+		return fortuneService.getFortune();
 	}
 
+	public void setEmailAddress(String emailAddress) {
+		System.out.println("CricketCoach: inside setter method - setEmailAdress");
+		this.emailAddress = emailAddress;
+	}
+
+	public void setTeam(String team) {
+		System.out.println("CricketCoach: inside setter method - setTeam");
+		this.team = team;
+	}
+
+	public String getEmailAddress() {
+		return emailAddress;
+	}
+
+	public String getTeam() {
+		return team;
+	}
 	//====================================================================================
 	// Getters and Setters 
 	//====================================================================================

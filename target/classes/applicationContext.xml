@@ -2,15 +2,34 @@
 <beans
 
 		xmlns="http://www.springframework.org/schema/beans"
-		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:context="http://www.springframework.org/schema/context"
 		xsi:schemaLocation="http://www.springframework.org/schema/beans
-    http://www.springframework.org/schema/beans/spring-beans.xsd
-    http://www.springframework.org/schema/context
-    http://www.springframework.org/schema/context/spring-context.xsd">
+   		http://www.springframework.org/schema/beans/spring-beans.xsd
+    	http://www.springframework.org/schema/context
+    	http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+	<!-- properties -->
+	<context:property-placeholder location="/Users/ianmacclancy/Documents/code-repos/springproject/src/sport.properties"/>
+
+	<!-- Define the dependancy-->
+	<bean id="myFortune" class="services.HappyFortuneService"></bean>
 
 
 	<!-- Define your beans here -->
-	<bean id = "myCoach" class = "coaches.TrackCoach"></bean>
+	<bean id="myCoach" class="coaches.TrackCoach">
+		<!-- setup constructor injection-->
+		<constructor-arg ref="myFortune"/>
+	</bean>
+
+	<bean id="myCricketCoach" class="coaches.CricketCoach">
+		<!-- setup setting injection -->
+		<property name="fortuneService" ref="myFortune"/>
+		<property name="${foo.email}" value="ianmacclancy@gmail.com"/>
+		<property name="${foo.team}" value="Ians Team"/>
+	</bean>
+
 
 </beans>
 

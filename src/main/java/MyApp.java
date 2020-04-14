@@ -2,7 +2,7 @@ import coaches.Coach;
 import coaches.TrackCoach;
 
 /**
- * Created by ianmacclancy on 6/10/19.
+ * Created by ianmacclancy on 7/15/19.
  */
 public class MyApp {
 
@@ -21,13 +21,9 @@ public class MyApp {
 	//====================================================================================
 	// Getters and Setters 
 	//====================================================================================
-
 	public static void main(String[] args) {
-		//create object
 		Coach theCoach = new TrackCoach();
 
 		System.out.println(theCoach.getDailyWorkout());
-
-		//use object
 	}
 }
